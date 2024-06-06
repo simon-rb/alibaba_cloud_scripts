@@ -30,7 +30,7 @@
 
 Make sure all prerequisites are met before proceeding with the setup and deployment steps.
 
-### Running the Script (Local Machine)
+### Step 1: Running the Script (Local Machine)
 
 1. **Create `config.json` on your local machine**:
    - Ensure the `config.json` file in the same directory as the script `create_ecs_instance.py` contains the necessary environment variables. Adjust the values to match your Alibaba Cloud account details:
@@ -60,7 +60,7 @@ Make sure all prerequisites are met before proceeding with the setup and deploym
 This sequence ensures that your ECS instance is set up with two EIPs and network interfaces, where EIP_1 is attached to ENI_1 respectively eth0 and EIP_2 is attached to ENI_2 respectively eth1.
 
 
-#### Step 2: Pull the Docker Image Locally (Local Machine)
+### Step 2: Pull the Docker Image Locally (Local Machine)
 
 1. **Log in to Docker Hub**:
    - Open a terminal on your local machine.
@@ -82,7 +82,7 @@ This sequence ensures that your ECS instance is set up with two EIPs and network
      docker tag nginx:latest registry-intl.eu-central-1.aliyuncs.com/your-namespace/your-repository:latest
      ```
 
-#### Step 4: Push the Docker Image to ACR (from Local Machine)
+### Step 3: Push the Docker Image to ACR (from Local Machine)
 
 1. **Log in to ACR from Your Local Machine**:
    - Log in to your ACR instance using the Docker CLI:
@@ -97,7 +97,7 @@ This sequence ensures that your ECS instance is set up with two EIPs and network
      docker push registry-intl.eu-central-1.aliyuncs.com/your-namespace/your-repository:latest
      ```
 
-#### Step 5: Deploy the Docker Image on ECS (ECS Instance)
+### Step 4: Deploy the Docker Image on ECS (ECS Instance)
 
 1. **Log in to ECS Instance**:
    - Log in to your ECS instance using the e.g., Alibaba Cloud console's Terminal Connect feature with temporary credentials.
@@ -128,7 +128,7 @@ This sequence ensures that your ECS instance is set up with two EIPs and network
      sudo docker run -d -p 80:80 --name mynginx registry-intl.eu-central-1.aliyuncs.com/your-namespace/your-repository:latest
      ```
 
-#### Step 6: Verify the Setup (Local Machine)
+### Step 5: Verify the Setup (Local Machine)
 
 - **Check Docker Container Status**:
     - Verify that the Docker container is running:
