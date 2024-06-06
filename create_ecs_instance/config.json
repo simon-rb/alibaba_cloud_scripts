@@ -1,0 +1,8 @@
+{
+    "access_key_id": "X",
+    "access_key_secret": "X",
+    "region_id": "eu-central-1",
+    "vpc_id": "vpc-X",
+    "security_group_id": "sg-X",
+    "vswitch_id": "vsw-X"
+}
