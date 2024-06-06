@@ -33,7 +33,7 @@ Make sure all prerequisites are met before proceeding with the setup and deploym
 ### Running the Script
 
 1. **Create `config.json` on your local machine**:
-   - Ensure the `config.json` file in the same directory as your script contains the necessary environment variables. Adjust the values to match your Alibaba Cloud account details:
+   - Ensure the `config.json` file in the same directory as the script create_ecs_instance.py contains the necessary environment variables. Adjust the values to match your Alibaba Cloud account details:
      ```json
      {
        "access_key_id": "your-access-key-id",
