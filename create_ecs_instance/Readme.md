@@ -5,40 +5,30 @@
 1. **Alibaba Cloud Account**:
    - Ensure you have an Alibaba Cloud account with the necessary permissions to create and manage resources.
 
-2. **SDK Installation**:
-   - Install the Alibaba Cloud Python SDK:
-     ```sh
-     pip install aliyun-python-sdk-core
-     pip install aliyun-python-sdk-ecs
-     pip install aliyun-python-sdk-vpc
-     ```
+2. **SDK Installation on Local Machine**:
+    - Install the Alibaba Cloud Python SDK:
+        ```sh
+        pip install aliyun-python-sdk-core
+        pip install aliyun-python-sdk-ecs
+        pip install aliyun-python-sdk-vpc
+        ```
 
 3. **Access Keys**:
-   - Obtain your Access Key ID and Secret from the Alibaba Cloud console.
+    - Obtain your Access Key ID and Secret from the Alibaba Cloud console.
 
 4. **Container Registry Setup**:
-   - **Log in to Alibaba Cloud Console**:
-     - Go to the Alibaba Cloud Console.
-     - Navigate to the **Container Registry** service.
-     - Create a new personal Container Registry instance.
-     - Create a new repository within your ACR instance. Note down the repository name and namespace and password.
+    - Go to the Alibaba Cloud Console.
+    - Navigate to the **Container Registry** service.
+    - Create a new personal Container Registry instance (no need for enterprise edition).
+    - Create a new repository within your ACR instance. Note down the repository name, namespace and password.
 
 5. **Docker**:
-   - Ensure Docker is installed on your local machine and the ECS instance. For example:
-     ```sh
-     sudo apt-get update
-     sudo apt-get install -y docker.io
-     sudo systemctl start docker
-     ```
+    - Ensure Docker is installed on your local machine and the ECS instance (done after logging in to ECS).
 
 6. **Python Environment**:
    - Ensure Python is installed on your local machine.
 
 Make sure all prerequisites are met before proceeding with the setup and deployment steps.
-
-
-
-
 
 ### Running the Script
 
