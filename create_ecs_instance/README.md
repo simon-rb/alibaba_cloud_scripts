@@ -133,9 +133,9 @@ This sequence ensures that your ECS instance is set up with 2 EIPs and 2 network
 
     - Replace `172.29.40.139` and `172.29.40.140` with the internal IPs of your ENIs, and adjust the ports as needed.
 
-### Step 5: Verify the Setup (ECS Instance)
+### Step 5: Verify the Setup (ECS Instance, Local Machine)
 
-1. **Check Docker Container Status**:
+1. **Check Docker Container Status (ECS Instance)**:
     - Verify that the Docker containers are running:
       ```sh
       sudo docker ps
