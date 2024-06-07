@@ -104,12 +104,7 @@ This sequence ensures that your ECS instance is set up with 2 EIPs and 2 network
    - Log in to your ECS instance using the e.g., Alibaba Cloud console's Terminal Connect feature with temporary credentials.
 
 2. **Install Docker on ECS**:
-   - If Docker is not installed on your ECS instance, install it:
-     ```sh
-     sudo apt-get update
-     sudo apt-get install -y docker.io
-     sudo systemctl start docker
-     ```
+   - Docker is automatically installed on your ECS instance using a user data script.
 
 3. **Log in to ACR from ECS Instance**:
    - Log in to your ACR instance from the ECS instance using the Docker CLI (use password associated with pre-created ACR):
@@ -130,6 +125,8 @@ This sequence ensures that your ECS instance is set up with 2 EIPs and 2 network
       sudo docker run -d \
       -p 172.29.40.139:80:80 \
       -p 172.29.40.140:8080:80 \
+      -p ... \
+      -p ... \
       --name mynginx registry-intl.eu-central-1.aliyuncs.com/your-namespace/your-repository:latest
       ```
 

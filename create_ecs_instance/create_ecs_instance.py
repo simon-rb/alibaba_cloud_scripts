@@ -17,8 +17,9 @@ from aliyunsdkecs.request.v20140526.DescribeInstancesRequest import (
     DescribeInstancesRequest,
 )
 
-import time
+import base64
 import json
+import time
 
 # Load configuration
 with open("config.json", "r") as config_file:
@@ -72,6 +73,17 @@ def create_ecs_instance():
         request.set_InternetChargeType("PayByTraffic")
         request.set_InternetMaxBandwidthOut(10)
         request.set_InternetMaxBandwidthIn(10)
+
+        user_data_script = """#!/bin/bash
+        apt-get update -y
+        apt-get upgrade -y
+        apt-get install -y docker.io
+        systemctl start docker
+        systemctl enable docker
+        """
+
+        encoded_user_data = base64.b64encode(user_data_script.encode('utf-8')).decode('utf-8')
+        request.set_UserData(encoded_user_data)
 
         response = client.do_action_with_exception(request)
         response_dict = json.loads(response)
