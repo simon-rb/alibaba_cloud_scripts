@@ -125,7 +125,7 @@ This sequence ensures that your ECS instance is set up with 2 EIPs and 2 network
 
 5. **Run the pulled Docker image on the ECS instance with internal IP binding**:
 
-    - Ensure the Docker container binds to the specific internal IPs associated with each ENI for proper traffic routing:
+    - On your ECS instance, run the Docker containers with multiple ports bound using the -p option:
       ```sh
       sudo docker run -d \
       -p 172.29.40.139:80:80 \
@@ -138,6 +138,7 @@ This sequence ensures that your ECS instance is set up with 2 EIPs and 2 network
 ### Step 5: Verify the Setup (ECS Instance, Local Machine)
 
 1. **Check Docker Container Status (ECS Instance)**:
+    - Ensure ports 80 and 8080 are open in your security group for inbound traffic.
     - Verify that the Docker containers are running:
       ```sh
       sudo docker ps
@@ -155,6 +156,6 @@ This sequence ensures that your ECS instance is set up with 2 EIPs and 2 network
       http://<Primary_EIP>
       http://<Secondary_EIP>:8080
       ```
-    - Ensure that ports 80 and 8080 are open for inbound traffic in the security group settings. You should see the Nginx welcome page indicating that the Nginx server is running successfully for both EIPs.
+    - You should see the Nginx welcome page indicating that the Nginx server is running successfully for both EIPs.
 
 This sequence ensures that you have the image correctly tagged and pushed to ACR, and then pulled and run on your ECS instance. The setup is verified with each EIP bound to different ports, confirming that the configuration is working correctly.
