@@ -154,6 +154,6 @@ This sequence ensures that your ECS instance is set up with 2 EIPs and 2 network
       http://<Primary_EIP>
       http://<Secondary_EIP>:8080
       ```
-    - You should see the Nginx welcome page indicating that the Nginx server is running successfully for both EIPs.
+    - Ensure that ports 80 and 8080 are open for inbound traffic in the security group settings. You should see the Nginx welcome page indicating that the Nginx server is running successfully for both EIPs.
 
 This sequence ensures that you have the image correctly tagged and pushed to ACR, and then pulled and run on your ECS instance. The setup is verified with each EIP bound to different ports, confirming that the configuration is working correctly.
