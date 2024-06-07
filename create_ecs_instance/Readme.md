@@ -132,7 +132,7 @@ This sequence ensures that your ECS instance is set up with two EIPs and network
 
     - Replace `172.29.40.139` and `172.29.40.140` with the internal IPs of your ENIs, and adjust the ports as needed.
 
-### Step 5: Verify the Setup (Local Machine)
+### Step 5: Verify the Setup (ECS Instance)
 
 1. **Check Docker Container Status**:
     - Verify that the Docker containers are running:
@@ -146,7 +146,7 @@ This sequence ensures that your ECS instance is set up with two EIPs and network
       <container_id2>   registry-intl.eu-central-1.aliyuncs.com/your-namespace/your-repository:latest    "nginx -g 'daemon of…"   <time_since_created>   Up <time_since_up>    172.29.40.140:8080->80/tcp                  mynginx2
       ```
 
-2. **Access the Running Nginx Servers**:
+2. **Access the Running Nginx Servers (Local Machine)**:
     - Use the public static IPv4 addresses (EIPs) associated with the ECS instance to access the running Nginx servers (both are visible in the Alibaba Cloud console ECS section).
     - Open a web browser and navigate to the public IPv4 addresses:
       ```
