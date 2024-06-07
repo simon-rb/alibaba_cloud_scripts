@@ -1,4 +1,9 @@
-### Deploy an ECS Instance with 2 EIPs and 2 ENIs, and Run a Docker Image Using the SDK
+### Deploy an ECS Instance with 2 EIPs and 2 ENIs, and Run a Docker Image Using the SDK with Each EIP Bound to a Different Port on the ECS Instance
+
+In this deployment, we set up an Elastic Compute Service (ECS) instance on Alibaba Cloud with 2 Elastic IPs (EIPs) and 2 Elastic Network Interfaces (ENIs). 
+We then use Alibaba Cloud SDK to automate the creation and configuration of these resources. Additionally, we set up an Alibaba Cloud Container Registry (ACR) 
+to store a Docker image, which we then pull and run on the ECS instance. 
+Each EIP is bound to a different port on the ECS instance, allowing us to verify the deployment by accessing the running Docker containers via the assigned EIPs.
 
 ### Prerequisites
 
@@ -82,7 +87,7 @@ This sequence ensures that your ECS instance is set up with two EIPs and network
      docker tag nginx:latest registry-intl.eu-central-1.aliyuncs.com/your-namespace/your-repository:latest
      ```
 
-### Step 3: Push the Docker Image to ACR (from Local Machine)
+### Step 3: Push the Docker Image to ACR (Local Machine)
 
 1. **Log in to ACR from Your Local Machine**:
    - Log in to your ACR instance using the Docker CLI:
@@ -155,4 +160,4 @@ This sequence ensures that your ECS instance is set up with two EIPs and network
       ```
     - You should see the Nginx welcome page indicating that the Nginx server is running successfully for both EIPs.
 
-This sequence ensures that you have the image correctly tagged and pushed to ACR, and then pulled and run on your ECS instance, with verification steps to confirm the setup is working correctly for both EIPs.
+This sequence ensures that you have the image correctly tagged and pushed to ACR, and then pulled and run on your ECS instance. The setup is verified with each EIP bound to different ports, confirming that the configuration is working correctly.
