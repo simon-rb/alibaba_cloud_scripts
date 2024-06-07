@@ -127,8 +127,10 @@ This sequence ensures that your ECS instance is set up with 2 EIPs and 2 network
 
     - Ensure the Docker container binds to the specific internal IPs associated with each ENI for proper traffic routing:
       ```sh
-      sudo docker run -d -p 172.29.40.139:80:80 --name mynginx1 registry-intl.eu-central-1.aliyuncs.com/your-namespace/your-repository:latest
-      sudo docker run -d -p 172.29.40.140:8080:80 --name mynginx2 registry-intl.eu-central-1.aliyuncs.com/your-namespace/your-repository:latest
+      sudo docker run -d \
+      -p 172.29.40.139:80:80 \
+      -p 172.29.40.140:8080:80 \
+      --name mynginx registry-intl.eu-central-1.aliyuncs.com/your-namespace/your-repository:latest
       ```
 
     - Replace `172.29.40.139` and `172.29.40.140` with the internal IPs of your ENIs, and adjust the ports as needed.
@@ -142,9 +144,8 @@ This sequence ensures that your ECS instance is set up with 2 EIPs and 2 network
       ```
     - You should see an output similar to this, indicating that the Nginx containers are running:
       ```sh
-      CONTAINER ID      IMAGE                                                                            COMMAND                  CREATED                STATUS                PORTS                                       NAMES
-      <container_id1>   registry-intl.eu-central-1.aliyuncs.com/your-namespace/your-repository:latest    "nginx -g 'daemon of…"   <time_since_created>   Up <time_since_up>    172.29.40.139:80->80/tcp                    mynginx1
-      <container_id2>   registry-intl.eu-central-1.aliyuncs.com/your-namespace/your-repository:latest    "nginx -g 'daemon of…"   <time_since_created>   Up <time_since_up>    172.29.40.140:8080->80/tcp                  mynginx2
+      CONTAINER ID      IMAGE                                                                            COMMAND                  CREATED                STATUS                PORTS                                                  NAMES
+      <container_id>    registry-intl.eu-central-1.aliyuncs.com/your-namespace/your-repository:latest    "nginx -g 'daemon of…"   <time_since_created>   Up <time_since_up>    172.29.40.139:80->80/tcp, 172.29.40.140:8080->80/tcp   mynginx
       ```
 
 2. **Access the Running Nginx Servers (Local Machine)**:
