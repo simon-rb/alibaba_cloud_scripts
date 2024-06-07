@@ -1,9 +1,6 @@
 ### Deploy an ECS Instance with 2 EIPs and 2 ENIs, and Run a Docker Image Using the SDK with Each EIP Bound to a Different Port on the ECS Instance
 
-In this deployment, we set up an Elastic Compute Service (ECS) instance on Alibaba Cloud with 2 Elastic IPs (EIPs) and 2 Elastic Network Interfaces (ENIs). 
-We then use Alibaba Cloud SDK to automate the creation and configuration of these resources. Additionally, we set up an Alibaba Cloud Container Registry (ACR) 
-to store a Docker image, which we then pull and run on the ECS instance. 
-Each EIP is bound to a different port on the ECS instance, allowing us to verify the deployment by accessing the running Docker containers via the assigned EIPs.
+In this deployment, we set up an Elastic Compute Service (ECS) instance on Alibaba Cloud with 2 Elastic IPs (EIPs) and 2 Elastic Network Interfaces (ENIs). We use the Alibaba Cloud SDK to automate the creation and configuration of these resources. As a prerequisite, you must create an Alibaba Cloud Container Registry (ACR) to store a Docker image. This image will be pulled and run on the ECS instance. Each EIP is bound to a different port on the ECS instance, allowing us to verify the deployment by accessing the running Docker containers via the assigned EIPs.
 
 ### Prerequisites
 
@@ -62,8 +59,7 @@ Make sure all prerequisites are met before proceeding with the setup and deploym
 4. **Monitor Output**:
    - The script will output the progress of each step, including creating the ECS instance, attaching ENIs, allocating EIPs, and associating the EIPs with the instance and ENIs.
 
-This sequence ensures that your ECS instance is set up with two EIPs and network interfaces, where EIP_1 is attached to ENI_1 respectively eth0 and EIP_2 is attached to ENI_2 respectively eth1.
-
+This sequence ensures that your ECS instance is set up with 2 EIPs and 2 network interfaces: EIP_1 is attached to ENI_1 (eth0), and EIP_2 is attached to ENI_2 (eth1).
 
 ### Step 2: Pull the Docker Image Locally (Local Machine)
 
