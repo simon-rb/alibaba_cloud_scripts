@@ -122,31 +122,37 @@ This sequence ensures that your ECS instance is set up with two EIPs and network
      sudo docker pull registry-intl.eu-central-1.aliyuncs.com/your-namespace/your-repository:latest
      ```
 
-5. **Run the Docker Image on ECS**:
-   - Run the pulled Docker image on the ECS instance:
-     ```sh
-     sudo docker run -d -p 80:80 --name mynginx registry-intl.eu-central-1.aliyuncs.com/your-namespace/your-repository:latest
-     ```
+5. **Run the pulled Docker image on the ECS instance with internal IP binding**:
+
+    - Ensure the Docker container binds to the specific internal IPs associated with each ENI for proper traffic routing:
+      ```sh
+      sudo docker run -d -p 172.29.40.139:80:80 --name mynginx1 registry-intl.eu-central-1.aliyuncs.com/your-namespace/your-repository:latest
+      sudo docker run -d -p 172.29.40.140:8080:80 --name mynginx2 registry-intl.eu-central-1.aliyuncs.com/your-namespace/your-repository:latest
+      ```
+
+    - Replace `172.29.40.139` and `172.29.40.140` with the internal IPs of your ENIs, and adjust the ports as needed.
 
 ### Step 5: Verify the Setup (Local Machine)
 
-- **Check Docker Container Status**:
-    - Verify that the Docker container is running:
-        ```sh
-        sudo docker ps
-        ```
-    - You should see an output similar to this, indicating that the Nginx container is running:
-        ```sh
-        CONTAINER ID     IMAGE                                                                            COMMAND                  CREATED                STATUS                PORTS                               NAMES
-        <container_id>   registry-intl.eu-central-1.aliyuncs.com/your-namespace/your-repository:latest    "nginx -g 'daemon of…"   <time_since_created>   Up <time_since_up>    0.0.0.0:80->80/tcp, :::80->80/tcp   mynginx
-        ```
-- **Access the Running Nginx Server**:
-    - Use the public static IPv4 addresses (2 EIPs) associated with the ECS instance to access the running Nginx server (both are visible in the Alibaba Cloud console ECS section).
+1. **Check Docker Container Status**:
+    - Verify that the Docker containers are running:
+      ```sh
+      sudo docker ps
+      ```
+    - You should see an output similar to this, indicating that the Nginx containers are running:
+      ```sh
+      CONTAINER ID      IMAGE                                                                            COMMAND                  CREATED                STATUS                PORTS                                       NAMES
+      <container_id1>   registry-intl.eu-central-1.aliyuncs.com/your-namespace/your-repository:latest    "nginx -g 'daemon of…"   <time_since_created>   Up <time_since_up>    172.29.40.139:80->80/tcp                    mynginx1
+      <container_id2>   registry-intl.eu-central-1.aliyuncs.com/your-namespace/your-repository:latest    "nginx -g 'daemon of…"   <time_since_created>   Up <time_since_up>    172.29.40.140:8080->80/tcp                  mynginx2
+      ```
+
+2. **Access the Running Nginx Servers**:
+    - Use the public static IPv4 addresses (EIPs) associated with the ECS instance to access the running Nginx servers (both are visible in the Alibaba Cloud console ECS section).
     - Open a web browser and navigate to the public IPv4 addresses:
-        ```
-        http://<Primary_EIP>
-        http://<Secondary_EIP>
-        ```
+      ```
+      http://<Primary_EIP>
+      http://<Secondary_EIP>:8080
+      ```
     - You should see the Nginx welcome page indicating that the Nginx server is running successfully for both EIPs.
 
-This sequence ensures that you have the image correctly tagged and pushed to ACR, and then pulled and run on your ECS instance, with verification steps to confirm the setup is working correctly.
+This sequence ensures that you have the image correctly tagged and pushed to ACR, and then pulled and run on your ECS instance, with verification steps to confirm the setup is working correctly for both EIPs.
