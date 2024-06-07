@@ -1,4 +1,4 @@
-### Rename eth0 and eth1 without getting disconnected (ECS Instance)
+### Rename eth0 and eth1 Without Getting Disconnected (ECS Instance)
 
 1. **Edit the Script**:
    ```bash
@@ -37,7 +37,7 @@
    ip addr show
    ```
 
-### Reset to standard naming convention (if required) (ECS Instance)
+### Reset to Standard Naming Convention (ECS Instance)
 
 1. **Create a Reset Script**:
    ```bash
