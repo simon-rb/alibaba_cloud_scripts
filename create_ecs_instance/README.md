@@ -142,14 +142,14 @@ This sequence ensures that your ECS instance is set up with 2 EIPs and 2 network
       ```sh
       sudo docker ps
       ```
-    - You should see an output similar to this, indicating that the Nginx containers are running:
+    - You should see an output similar to this, indicating that the Nginx container is running:
       ```sh
       CONTAINER ID      IMAGE                                                                            COMMAND                  CREATED                STATUS                PORTS                                                  NAMES
       <container_id>    registry-intl.eu-central-1.aliyuncs.com/your-namespace/your-repository:latest    "nginx -g 'daemon of…"   <time_since_created>   Up <time_since_up>    172.29.40.139:80->80/tcp, 172.29.40.140:8080->80/tcp   mynginx
       ```
 
 2. **Access the Running Nginx Servers (Local Machine)**:
-    - Use the public static IPv4 addresses (EIPs) associated with the ECS instance to access the running Nginx servers (both are visible in the Alibaba Cloud console ECS section).
+    - Use the public static IPv4 addresses (EIPs) associated with the ECS instance to access the running Nginx server (both are visible in the Alibaba Cloud console ECS section).
     - Open a web browser and navigate to the public IPv4 addresses:
       ```
       http://<Primary_EIP>
