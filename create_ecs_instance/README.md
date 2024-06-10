@@ -134,7 +134,7 @@ This sequence ensures that your ECS instance is set up with 2 EIPs and 2 network
       --name mynginx registry-intl-vpc.eu-central-1.aliyuncs.com/your-namespace/your-repository:latest
       ```
 
-    - Replace `172.29.40.139` and `172.29.40.140` with the internal IPs of your ENIs, and adjust the ports as needed.
+    - Replace `your-internal-ip-eth0` and `your-internal-ip-eth1` with the internal IPs of your ENIs, and adjust the ports as needed.
 
 ### Step 5: Verify the Setup (ECS Instance, Local Machine)
 
