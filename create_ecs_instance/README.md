@@ -109,13 +109,13 @@ This sequence ensures that your ECS instance is set up with 2 EIPs and 2 network
 3. **Log in to ACR from ECS Instance**:
    - Log in to your ACR instance from the ECS instance using the Docker CLI (use password associated with pre-created ACR):
      ```sh
-     sudo docker login --username=your-username@your-alibaba-cloud-id registry-intl.eu-central-1.aliyuncs.com
+     sudo docker login --username=your-username@your-alibaba-cloud-id registry-intl-vpc.eu-central-1.aliyuncs.com
      ```
 
 4. **Pull the Docker Image from ACR**:
    - Pull the Docker image from your ACR repository to the ECS instance:
      ```sh
-     sudo docker pull registry-intl.eu-central-1.aliyuncs.com/your-namespace/your-repository:latest
+     sudo docker pull registry-intl-vpc.eu-central-1.aliyuncs.com/your-namespace/your-repository:latest
      ```
 
 5. **Run the pulled Docker image on the ECS instance with internal IP binding**:
@@ -123,11 +123,15 @@ This sequence ensures that your ECS instance is set up with 2 EIPs and 2 network
     - On your ECS instance, run the Docker containers with multiple ports bound using the -p option:
       ```sh
       sudo docker run -d \
-      -p 172.29.40.139:80:80 \
-      -p 172.29.40.140:8080:80 \
-      -p ... \
-      -p ... \
-      --name mynginx registry-intl.eu-central-1.aliyuncs.com/your-namespace/your-repository:latest
+      -p your-internal-ip-eth0:80:80 \ 
+      -p your-internal-ip-eth0:443:443 \
+      -p your-internal-ip-eth1:2152:2152 \
+      -p your-internal-ip-eth1:36443:36443 \
+      -p your-internal-ip-eth1:36412:36412 \
+      -p your-internal-ip-eth1:80:80 \
+      -p your-internal-ip-eth1:443:443 \
+      
+      --name mynginx registry-intl-vpc.eu-central-1.aliyuncs.com/your-namespace/your-repository:latest
       ```
 
     - Replace `172.29.40.139` and `172.29.40.140` with the internal IPs of your ENIs, and adjust the ports as needed.
@@ -142,8 +146,8 @@ This sequence ensures that your ECS instance is set up with 2 EIPs and 2 network
       ```
     - You should see an output similar to this, indicating that the Nginx container is running:
       ```sh
-      CONTAINER ID      IMAGE                                                                            COMMAND                  CREATED                STATUS                PORTS                                                  NAMES
-      <container_id>    registry-intl.eu-central-1.aliyuncs.com/your-namespace/your-repository:latest    "nginx -g 'daemon of…"   <time_since_created>   Up <time_since_up>    172.29.40.139:80->80/tcp, 172.29.40.140:8080->80/tcp   mynginx
+      CONTAINER ID      IMAGE                                                                                COMMAND                  CREATED                STATUS                PORTS                                                  NAMES
+      <container_id>    registry-intl-vpc.eu-central-1.aliyuncs.com/your-namespace/your-repository:latest    "nginx -g 'daemon of…"   <time_since_created>   Up <time_since_up>    your-internal-ip-eth0->80/tcp, ...                     mynginx
       ```
 
 2. **Access the Running Nginx Servers (Local Machine)**:
