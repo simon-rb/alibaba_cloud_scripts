@@ -12,14 +12,14 @@
    # Bring down both interfaces
    ip link set eth0 down
    ip link set eth1 down
-
-   # Rename the interfaces
-   ip link set eth0 name input
-   ip link set eth1 name output
-
+   
+   # Rename the interfaces using a temporary name
+   ip link set eth0 name output
+   ip link set eth1 name input1
+   
    # Bring up the renamed interfaces
-   ip link set input up
    ip link set output up
+   ip link set input1 up
    ```
 
 3. **Save and Make the Script Executable**:
@@ -49,12 +49,12 @@
    #!/bin/bash
 
    # Bring down both interfaces
-   ip link set input down
    ip link set output down
+   ip link set input1 down
 
    # Rename the interfaces back to their original names
-   ip link set input name eth0
-   ip link set output name eth1
+   ip link set output name eth0
+   ip link set input1 name eth1
 
    # Bring up the renamed interfaces
    ip link set eth0 up
