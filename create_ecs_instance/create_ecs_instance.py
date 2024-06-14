@@ -49,15 +49,11 @@ def create_ecs_instance():
     try:
         request = CreateInstanceRequest()
         request.set_InstanceName("MyECSInstance")
-        request.set_ImageId(
-            "ubuntu_22_04_x64_20G_alibase_20240508.vhd"
-        )
-        request.set_InstanceType("ecs.t5-lc1m2.large")
+        request.set_ImageId("ubuntu_22_04_x64_20G_alibase_20240508.vhd")
+        request.set_InstanceType("ecs.g6.xlarge")
         request.set_SecurityGroupId(security_group_id)
         request.set_VSwitchId(v_switch_id)
-        request.set_SystemDiskCategory(
-            "cloud_efficiency"
-        )
+        request.set_SystemDiskCategory("cloud_efficiency")
         request.set_SystemDiskSize(40)
 
         data_disks = [
@@ -82,7 +78,9 @@ def create_ecs_instance():
         systemctl enable docker
         """
 
-        encoded_user_data = base64.b64encode(user_data_script.encode('utf-8')).decode('utf-8')
+        encoded_user_data = base64.b64encode(user_data_script.encode("utf-8")).decode(
+            "utf-8"
+        )
         request.set_UserData(encoded_user_data)
 
         response = client.do_action_with_exception(request)
