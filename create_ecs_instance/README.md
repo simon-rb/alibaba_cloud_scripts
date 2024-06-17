@@ -126,7 +126,7 @@ This step details pulling the Docker image from ACR to an ECS instance and runni
        sudo docker run -it --rm nginx:latest
        ```
 
-### Step 5: Verify the Setup (ECS Instance, Local Machine)
+### Step 4: Verify the Setup (ECS Instance, Local Machine)
 
 Confirm that your Docker containers are operating as expected:
 
