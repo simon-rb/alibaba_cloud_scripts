@@ -25,7 +25,7 @@ Ensure the following prerequisites are met to successfully deploy and manage the
    - Create a repository within your ACR, noting down the repository name, namespace, and a created password for access.
 
 5. **Docker Installation**:
-   - Docker must be installed on both your local machine and the ECS instance for image management and deployment.
+   - Docker must be installed on both your local machine and the ECS instance to manage and deploy images. The installation on the ECS instance is handled automatically.
 
 6. **Python Environment**:
    - Ensure Python is installed and configured on your local machine for running deployment scripts.
