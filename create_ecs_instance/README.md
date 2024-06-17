@@ -119,26 +119,12 @@ This step details pulling the Docker image from ACR to an ECS instance and runni
             ```sh
             sudo docker run --network host --tmpfs /tmp --tmpfs /run --tmpfs /mnt -v redis_vol:/var/lib/redis -v etc_vol:/etc --privileged --rm -it registry-intl-vpc.eu-central-1.aliyuncs.com/your-namespace/your-repository:latest /bin/bash
             ```
-          - Here, the `--network host` flag allows the container to share the host's networking namespace, `--tmpfs` creates temporary file storage in RAM, and `-v` binds volumes for persistent data storage. The `--privileged` flag gives the container extended permissions, which might be necessary for certain applications or tests.
+          - Here, the `--network host` flag allows the container to share the host's networking namespace, `--tmpfs` creates temporary file storage in RAM, and `-v` binds volumes for persistent data storage. The `--privileged` flag gives the container extended permissions.
 
      - **For basic testing with a simpler setup** (e.g., using the `nginx:latest` image):
        ```sh
        sudo docker run -it --rm nginx:latest
        ```
-
-5. **Run the Docker Image**:
-   - Depending on your specific needs, select the appropriate Docker command:
-     - **For POC:**:
-       ```sh
-       sudo docker run --network host --tmpfs /tmp --tmpfs /run --tmpfs /mnt -v redis_vol:/var/lib/redis -v etc_vol:/etc --privileged --rm -it registry-intl-vpc.eu-central-1.aliyuncs.com/your-namespace/your-repository:latest /bin/bash
-       ```
-       Here, the `--network host` flag allows the container to share the host's networking namespace, `--tmpfs` creates temporary file storage in RAM, and `-v` binds volumes for persistent data storage. The `--privileged` flag gives the container extended permissions, which might be necessary for certain applications or tests.
-
-     - **For basic testing with a simpler setup** (e.g., using the `nginx:latest` image):
-       ```sh
-       sudo docker run -it --rm nginx:latest
-       ```
-
 
 ### Step 5: Verify the Setup (ECS Instance, Local Machine)
 
