@@ -95,7 +95,40 @@ This step details pulling the Docker image from ACR to an ECS instance and runni
 
 5. **Run the Docker Image**:
    - Depending on your specific needs, select the appropriate Docker command:
-     - **For POC or full configurations**:
+   
+     - **For POC**:
+       Before running the Docker container, you need to execute a script called `rename_interfaces.sh` from the Git repository:
+       
+       1. **Create the Script on the ECS Instance**:
+          - Open a text editor (e.g., `vim`) on the ECS instance:
+            ```sh
+            vim rename_interfaces.sh
+            ```
+          - Copy the script text from the Git repository into the file.
+          - Save and close the file.
+          
+       2. **Set Correct Permissions and Run the Script**:
+          - Ensure the script has the correct permissions and run it:
+            ```sh
+            chmod +x rename_interfaces.sh
+            sudo ./rename_interfaces.sh
+            ```
+
+       3. **Run the Docker Container**:
+          - Execute the following command to run the Docker container:
+            ```sh
+            sudo docker run --network host --tmpfs /tmp --tmpfs /run --tmpfs /mnt -v redis_vol:/var/lib/redis -v etc_vol:/etc --privileged --rm -it registry-intl-vpc.eu-central-1.aliyuncs.com/your-namespace/your-repository:latest /bin/bash
+            ```
+          - Here, the `--network host` flag allows the container to share the host's networking namespace, `--tmpfs` creates temporary file storage in RAM, and `-v` binds volumes for persistent data storage. The `--privileged` flag gives the container extended permissions, which might be necessary for certain applications or tests.
+
+     - **For basic testing with a simpler setup** (e.g., using the `nginx:latest` image):
+       ```sh
+       sudo docker run -it --rm nginx:latest
+       ```
+
+5. **Run the Docker Image**:
+   - Depending on your specific needs, select the appropriate Docker command:
+     - **For POC:**:
        ```sh
        sudo docker run --network host --tmpfs /tmp --tmpfs /run --tmpfs /mnt -v redis_vol:/var/lib/redis -v etc_vol:/etc --privileged --rm -it registry-intl-vpc.eu-central-1.aliyuncs.com/your-namespace/your-repository:latest /bin/bash
        ```
