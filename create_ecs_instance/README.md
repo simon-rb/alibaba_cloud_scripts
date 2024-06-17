@@ -131,9 +131,12 @@ This step details pulling the Docker image from ACR to an ECS instance and runni
 Confirm that your Docker containers are operating as expected:
 
 1. **Check Docker Container Status (ECS Instance)**:
-    - Use `sudo docker ps` to view active containers. Look for your container's ID, image, status, and port mappings to confirm it's running correctly.
+    - Use `sudo docker ps` to view active containers. Look for your container's ID, image and status to confirm it's running correctly.
 
 2. **Access the Running Containers**:
+   - **POC Docker Image**:
+     - The UI for the POC Docker image may be restricted to client-specific access.
+
    - **Nginx Setup**:
      - Access the Nginx server using the public static IPv4 addresses (EIPs) of your ECS instance. Navigate to:
        ```
@@ -141,6 +144,3 @@ Confirm that your Docker containers are operating as expected:
        http://<Secondary_EIP>
        ```
      - You should see the Nginx welcome page, confirming the server is accessible.
-
-   - **POC Docker Image**:
-     - The UI for the POC Docker image may be restricted to client-specific access.
