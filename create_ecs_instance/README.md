@@ -66,7 +66,7 @@ This step involves pushing a Docker image from your local machine to Alibaba Clo
    - Replace `your-username@your-alibaba-cloud-id` with your actual Alibaba Cloud username, and adjust the registry endpoint accordingly.
 
 2. **Push the Docker Image**:
-   - Push your Docker image to ACR. This could be a POC-specific image or any other required image:
+   - Push your Docker image to ACR. This could be a POC-specific image or any other image:
      ```sh
      docker push registry-intl.eu-central-1.aliyuncs.com/your-namespace/your-repository:latest
      ```
@@ -76,13 +76,13 @@ This step involves pushing a Docker image from your local machine to Alibaba Clo
 This step details pulling the Docker image from ACR to an ECS instance and running it with appropriate configurations.
 
 1. **Log in to ECS Instance**:
-   - Access your ECS instance, e.g., via Alibaba Cloud console's Terminal Connect feature.
+   - Access your ECS instance using the Terminal Connect feature in the Alibaba Cloud console with e.g. temporary credentials.
 
 2. **Ensure Docker Is Installed**:
-   - Confirm Docker is installed on the ECS instance, typically handled by a user data script during instance setup.
+   - Confirm Docker is installed on the ECS instance, handled by a user data script during instance setup.
 
 3. **Authenticate to ACR on ECS**:
-   - Log in to your ACR from the ECS instance to access the Docker image:
+   - Log in to your ACR from the ECS instance to access the Docker image using the internal VPC address (for faster transfer):
      ```sh
      sudo docker login --username=your-username@your-alibaba-cloud-id registry-intl-vpc.eu-central-1.aliyuncs.com
      ```
