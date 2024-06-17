@@ -1,6 +1,6 @@
 ### Deploy an ECS Instance with 2 EIPs and 2 ENIs Using the Alibaba Cloud SDK
 
-This guide outlines setting up an ECS instance on Alibaba Cloud with two Elastic IP addresses (EIPs) and two Elastic Network Interfaces (ENIs). The Alibaba Cloud SDK automates the creation and setup of these resources, and a Docker image hosted in Alibaba Cloud Container Registry (ACR) will be deployed on the ECS instance.
+This guide outlines setting up an ECS instance on Alibaba Cloud with 2 Elastic IP addresses (EIPs) and 2 Elastic Network Interfaces (ENIs). The Alibaba Cloud SDK automates the creation and setup of these resources, and a Docker image hosted in Alibaba Cloud Container Registry (ACR) will be deployed on the ECS instance.
 
 ### Prerequisites
 
@@ -35,7 +35,7 @@ Complete these prerequisites before initiating the ECS setup to ensure a smooth 
 
 ### Step 1: Running the Script (Local Machine)
 
-This step involves using a script from the GitHub repository to automate the deployment of an ECS instance configured with 2 EIPs and 2 ENIs. Follow these streamlined instructions:
+This step involves using a script (`create_ecs_instance.py`) from the GitHub repository to automate the deployment of an ECS instance configured with 2 EIPs and 2 ENIs:
 
 1. **Set Up `config.json`**:
    - Ensure the `config.json` file, located in the same directory as `create_ecs_instance.py`, is correctly configured with your Alibaba Cloud credentials and resource identifiers. It should include keys for `access_key_id`, `access_key_secret`, `region_id`, `vpc_id`, `security_group_id`, and `vswitch_id`.
