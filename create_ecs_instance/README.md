@@ -37,11 +37,11 @@ Complete these prerequisites before initiating the ECS setup to ensure a smooth 
 
 This step involves using a script (`create_ecs_instance.py`) from the GitHub repository to automate the deployment of an ECS instance configured with 2 EIPs and 2 ENIs:
 
-1. **Set Up `config.json`**:
-   - Ensure the `config.json` file, located in the same directory as `create_ecs_instance.py`, is correctly configured with your Alibaba Cloud credentials and resource identifiers. It should include keys for `access_key_id`, `access_key_secret`, `region_id`, `vpc_id`, `security_group_id`, and `vswitch_id`.
-
-2. **Ensure Script Availability**:
+1. **Ensure Script Availability**:
    - Verify that `create_ecs_instance.py` is in the same folder as `config.json`. Both files should be pulled from the existing GitHub repository.
+
+2. **Set Up `config.json`**:
+   - Ensure the `config.json` file, located in the same directory as `create_ecs_instance.py`, is correctly configured with your Alibaba Cloud credentials and resource identifiers. It should include keys for `access_key_id`, `access_key_secret`, `region_id`, `vpc_id`, `security_group_id`, and `vswitch_id`.
 
 3. **Execute the Script**:
    - Run the script via your command line to initiate the ECS setup:
@@ -52,7 +52,7 @@ This step involves using a script (`create_ecs_instance.py`) from the GitHub rep
 4. **Monitor Progress**:
    - Observe the script's output as it progresses through creating the ECS instance, attaching ENIs, allocating EIPs, and associating the EIPs with the instance.
 
-This procedure sets up the ECS instance with two network interfaces, ensuring EIP_1 is attached to ENI_1, and EIP_2 is attached to ENI_2. Each step is critical for the successful deployment of the configured resources.
+This procedure sets up the ECS instance with 2 network interfaces, ensuring EIP_1 is attached to ENI_1, and EIP_2 is attached to ENI_2.
 
 ### Step 2: Push the Docker Image to ACR (Local Machine)
 
